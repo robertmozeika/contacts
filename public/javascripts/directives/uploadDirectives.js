@@ -1,3 +1,6 @@
+require('angular');
+
+
 angular
   .module('app.directives.fileModel', [])
   .directive('fileModel', ['$parse', function ($parse) {

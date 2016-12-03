@@ -1,3 +1,6 @@
+require('angular');
+
+
 angular
   .module('app')
   .factory('ValidateFields', function(){
@@ -5,7 +8,7 @@ angular
         add: function(input){
           if (input.firstName && input.lastName && input.email){
             if (this.email(input.email)){
-              
+
               if (input.birthday == "Invalid Date"){
                 return 3 } else {
                   return 1

@@ -1,3 +1,6 @@
+var angular = require('angular');
+
+
 angular
   .module('app')
   .controller('addCtrl', ['$scope','GetContacts','ValidateFields','$state', 'fileUpload', 'Upload', function($scope, GetContacts, ValidateFields, $state, fileUpload, Upload){

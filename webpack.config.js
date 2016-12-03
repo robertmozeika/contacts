@@ -9,6 +9,20 @@ module.exports = {
     path: __dirname + "/public/javascripts/",
     filename: "scripts.min.js"
   },
+  module:{
+    loaders: [
+    // SASS one omitted
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query:
+        {
+          "presets": ["es2016"]
+        },
+      }
+    ]
+  },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),

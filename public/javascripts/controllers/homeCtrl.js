@@ -1,3 +1,6 @@
+var angular = require('angular');
+
+
 angular
   .module('app')
   .controller('homeCtrl', ['$scope','GetContacts','IndexOfObject',function($scope, GetContacts, IndexOfObject){

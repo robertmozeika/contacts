@@ -1,3 +1,6 @@
+require('angular');
+
+
 angular
   .module('app')
   .factory('GetContacts', ["$http", function($http){

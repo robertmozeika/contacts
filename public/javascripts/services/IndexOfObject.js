@@ -1,3 +1,6 @@
+require('angular');
+
+
 angular
   .module('app')
   .service('IndexOfObject', function ($http) {
