@@ -1,0 +1,39 @@
+<!--
+  <h1>
+    {{appTitle}}
+  </h1> -->
+  <div class="btn-group" >
+    <button ng-click="sortBy('fn')" class="btn" ng-class="fnBtnClass">Sort By First Name</button>
+    <button ng-click="sortBy('ln')" class="btn" ng-class="lnBtnClass">Sort By Last Name</button>
+    <button ng-click="sortBy('email')" class="btn" ng-class="emailBtnClass">Sort By Email Name</button>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4 flip-container" ng-repeat="contact in contacts | orderBy:sortType:sortReverse">
+      <div class="contact-grid well" ng-class="{'flipper': $index == currentIndex}">
+        <!-- <span class="glyphicon glyphicon-remove close-rpWindow"></span> -->
+        <div  ng-include="getDeletePop($index)">
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div id="contactDetailsContainer" ng-include="contactDetails">
+
+  </div>
+
+  <!-- <div id="confirmDeleteWindow" ng-class="confirmDeleteClass">
+    <h2>Are you user you want to delete this contact?</h2>
+    <button  ng-click="confirmDelete(true, $index)" class="btn btn-success">Yes</button>  <button ng-click="confirmDelete(false)" class="btn btn-danger">No</button>
+
+  </div> -->
+
+<!-- <div ng-include="deletePopup">
+
+</div> -->

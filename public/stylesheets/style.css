@@ -1,0 +1,160 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.contact-grid{
+  margin: 10px;
+  height: 300px;
+}
+
+.contact-col{
+}
+
+
+#confirmAddWindow{
+  height: 400px;
+  width: 400px;
+  background-color: grey;
+  position: fixed;
+
+}
+
+
+#confirmDeleteWindow{
+  position: relative;
+
+  transform: rotateY(-180deg);
+}
+
+
+.nav {
+  margin-bottom: 50px;
+}
+
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	/*width: 320px;
+	height: 480px;*/
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.9s;
+	transform-style: preserve-3d;
+  background-color: #428bca;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+#contactDetailsContainer {
+  position: fixed;
+  top: 0;
+
+
+}
+
+#contactDetailsOverlay{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.93);
+}
+
+#contactDetails {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  height: 400px;
+  width: 400px;
+  background-color: grey;
+}
+
+
+.windowOverlay{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.93);
+  z-index: 19
+}
+
+.popupBox {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  height: 400px;
+  width: 400px;
+  background-color: grey;
+  z-index: 20;
+}
+
+
+.fadeout {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+#addComment {
+  height: 100px;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.popover {
+  background-color: #ff4444;
+  color: white
+}
+
+.popover.right .arrow:after {
+  border-right-color: #ff4444;
+}
+.popover.bottom .arrow:after {
+  border-bottom-color: #ff4444;
+}
+.popover.top .arrow:after {
+  border-top-color: #ff4444;
+}

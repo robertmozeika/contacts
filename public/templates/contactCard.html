@@ -1,0 +1,12 @@
+<img ng-src="{{getProfilePic(contact._id)}}" />
+<li>First Name: {{contact.firstName}}</li>
+<li>Last Name: {{contact.lastName}}</li>
+<li>Email: {{contact.email}}</li>
+<li ng-class="showDetail(contact.phone)">Cell: {{contact.phone}}</li><br />
+<li ng-class="showDetail(contact.birthday)">Date of Birth: {{readBirthday(contact.birthday)}}</li>
+<li ng-class="showDetail(contact.groups[0])" >Group:<ul>
+
+<li ng-repeat="group in contact.groups">{{group}}</li> </ul></li>
+
+<button class="btn btn-success" ng-click="showCDetails(contact._id)" >View Details</button>
+<button class="btn btn-danger" ng-click="deleteButton($index, contact._id)">Delete</button>
