@@ -3,17 +3,11 @@ var angular = require('angular');
 
 angular
   .module('app')
-  .controller('homeCtrl', ['$scope','GetContacts','IndexOfObject',function($scope, GetContacts, IndexOfObject){
+  .controller('homeCtrl', ['$scope','GetContacts','IndexOfObject','DeleteButton', 'SortBy',function($scope, GetContacts, IndexOfObject, DeleteButton, SortBy){
 
 
-     $scope.sortType     = 'firstName'; // set the default sort type
-     $scope.sortReverse  = false;  // set the default sort order
-     $scope.searchFish   = '';
-     $scope.fnBtnClass = "btn-primary";
-     $scope.lnBtnClass = "btn-default";
-     $scope.emailBtnClass = "btn-default";
 
-     $scope.flipper = "";
+
 
 
 
@@ -22,68 +16,31 @@ angular
       $scope.contacts = data
     });
 
-    $scope.confirmDeleteClass = "hidden"
 
-    $scope.currentIndex = null;
-    $scope.currentID = null;
-    $scope.deletePop = 'templates/contactCard.html'
 
-    $scope.getDeletePop = function(index){
-      if (index == $scope.currentIndex){
-        return 'templates/deletePopup.html'
-      } else {
-        return 'templates/contactCard.html'
-      }
+    $scope.getDeletePop = DeleteButton.getDeletePop.bind(DeleteButton);
+
+
+    $scope.deleteButton = DeleteButton.pressDelete.bind(DeleteButton);
+
+
+    $scope.confirmDelete = DeleteButton.confirmDelete.bind(DeleteButton);
+
+    $scope.flipperClass = DeleteButton.flipperClass.bind(DeleteButton)
+
+
+    $scope.sorters = SortBy.sorters;
+    $scope.sortType     = function(){
+      return SortBy.sortType.data
+    }; // set the default sort type
+
+
+    $scope.sortByClass = function(){
+      return SortBy.sortByClass.number
     }
+    $scope.sortBy = SortBy.sortBy.bind(SortBy)
 
 
-    $scope.sortBy = function(input){
-      if (input == "fn"){
-        $scope.sortType     = 'firstName';
-        $scope.fnBtnClass = "btn-primary";
-        $scope.lnBtnClass = "btn-default";
-        $scope.emailBtnClass = "btn-default";
-
-      }
-      if (input == "ln"){
-        $scope.sortType     = 'lastName';
-        $scope.fnBtnClass = "btn-default";
-        $scope.lnBtnClass = "btn-primary";
-        $scope.emailBtnClass = "btn-default";
-      }
-      if (input == "email"){
-        $scope.sortType     = 'email';
-        $scope.fnBtnClass = "btn-default";
-        $scope.lnBtnClass = "btn-default";
-        $scope.emailBtnClass = "btn-primary";
-      }
-    }
-
-    $scope.deleteButton = function(index, id){
-
-      $scope.confirmDeleteClass = ""
-      $scope.currentIndex = index;
-      $scope.currentID = id;
-
-    }
-    $scope.confirmDelete = function(bool){
-
-
-        if (bool){
-
-          var actualIndex = IndexOfObject.getIndexID($scope.contacts,$scope.currentID)
-
-          $scope.contacts.splice(actualIndex, 1);
-          GetContacts.deleteContact($scope.currentID);
-          $scope.currentIndex = -1;
-
-
-      }   else {
-      //  $scope.confirmDeleteClass = "hidden"
-       $scope.currentIndex = -1;
-
-      }
-    }
 
     $scope.showDetail = function(element){
 
@@ -112,7 +69,6 @@ angular
 
     $scope.readBirthday = function(input){
       var newDate = new Date(input);
-      console.log(newDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}))
 
       return newDate.toLocaleString([], {day: '2-digit', month: '2-digit',year: '2-digit'});
     }

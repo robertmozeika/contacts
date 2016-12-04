@@ -108,7 +108,7 @@ angular
 
 
       var toDate = [];
-      if ($scope.dt == undefined && angular.element('#datePicker').val() !== ""){
+      if ($scope.dt == undefined && angular.element(document.querySelector('#datePicker')).val() !== ""){
         console.log(angular.element('#datePicker').val())
         angular.element('#datePicker').val().split(',')[0].split("/").map(function(val, index, arr) {
 
@@ -147,6 +147,7 @@ angular
 
         GetContacts.addContact($scope.toAdd);
         $scope.popupText = "New user is created";
+        $scope.openWindow();
       }
       else if (validation == 2){
         $scope.popoverEmailText = "Please enter a valid email address";

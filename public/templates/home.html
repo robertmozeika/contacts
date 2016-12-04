@@ -2,15 +2,17 @@
   <h1>
     {{appTitle}}
   </h1> -->
-  <div class="btn-group" >
-    <button ng-click="sortBy('fn')" class="btn" ng-class="fnBtnClass">Sort By First Name</button>
-    <button ng-click="sortBy('ln')" class="btn" ng-class="lnBtnClass">Sort By Last Name</button>
-    <button ng-click="sortBy('email')" class="btn" ng-class="emailBtnClass">Sort By Email Name</button>
+  <span>
+    Sort By:
+  </span>
+  <div class="btn-group">
+    <button  ng-repeat="sorter in sorters" ng-click="sortBy($index)" class="btn" ng-class="sortByClass() == $index ?'btn-primary' :  'btn-default'">{{sorter.proper}}</button>
+
   </div>
 
   <div class="row">
-    <div class="col-sm-4 flip-container" ng-repeat="contact in contacts | orderBy:sortType:sortReverse">
-      <div class="contact-grid well" ng-class="{'flipper': $index == currentIndex}">
+    <div class="col-sm-4 flip-container" ng-repeat="contact in contacts | orderBy:sortType()">
+      <div class="contact-grid well" ng-class="flipperClass($index)">
         <!-- <span class="glyphicon glyphicon-remove close-rpWindow"></span> -->
         <div  ng-include="getDeletePop($index)">
 
