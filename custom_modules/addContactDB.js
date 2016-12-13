@@ -1,8 +1,8 @@
 var mongodb = require('mongodb');
 
-function getAllContacts(body){
-  console.log(body)
+function addContact(body){
   return new Promise((resolve, reject)=>{
+    console.log('got here')
     var MongoClient = mongodb.MongoClient;
 
     var url = "mongodb://localhost:27017/avonto"
@@ -13,6 +13,10 @@ function getAllContacts(body){
         console.log('Connection between Database Success at connectDB');
 
         var collection = db.collection('contacts');
+
+        if (body.profilePic){
+          body.profilePic = '/images/' + body.user + body.profilePic + '.jpg'
+        }
 
         collection.insert(body, function(err, result){
           if(err) {
@@ -33,4 +37,4 @@ function getAllContacts(body){
 }
 
 
-module.exports = getAllContacts
+module.exports = addContact

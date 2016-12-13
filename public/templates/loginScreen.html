@@ -1,0 +1,43 @@
+<h1><span class="fa fa-sign-in"></span> Login</h1>
+
+
+<div class="container text-center">
+  <h1>
+    Welcome to contacts
+  </h1>
+  <div class="row">
+    <div class="col-md-6">
+
+          <div class="well center-block" style="width:300px">
+            <h1><span class="fa fa-sign-in"></span> Login</h1>
+
+            <h2>Login</h2>
+            <div class="text-left">
+              <form method="post" action="/login">
+                <label>Username</label><input name="username" class="form-control" type="text"/><br /><br />
+                <label>Password</label><input name="password" class="form-control" type="text"/><br /><br />
+              <button type="submit">Create Account</button>
+            </form>
+            </div>
+          </div>
+        </div>
+
+
+    <div class="col-md-6">
+        <div class="well text-center center-block" style="width:300px">
+          <h2>Create Account</h2>
+          <div class="text-left">
+            <form method="post" action="/login/signup">
+
+              <label>Username</label><input name="username" class="form-control" type="text" ng-model="newUserName"/><br /><br />
+              <label>Password</label><input name="password" class="form-control" type="text" ng-model="newPassword"/><br /><br />
+
+              <button type="submit">Create Account</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{nametag}}

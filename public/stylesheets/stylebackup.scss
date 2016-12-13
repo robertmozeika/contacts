@@ -1,0 +1,447 @@
+body {
+  /*padding: 50px;*/
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family:"Helvetica Neue",Helvetica,Arial,sans-serif*/
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+
+.flip-container {
+  padding:0px;
+  .well {
+    background-color: white;
+    padding-top: 10px;
+    margin: 0px;
+    border-radius: 0px;
+    // border-color: #33b5e5;
+    // border-width: 2px;
+  }
+}
+
+
+.contact-grid{
+  overflow: hidden;
+  margin: 10px;
+  transition: 0.9s;
+  height: 260px;
+
+  .contact-buttons {
+    margin-top: 10px;
+    position: absolute;
+    top: 150px;
+    @media (max-width: 992px){
+      top: 120px;
+    }
+
+
+  }
+  .col-lg-6 {
+    padding: 0px;
+  }
+  .name {
+    font-size: 28px;
+  }
+  .name-row {
+    margin-bottom: 10px;
+
+  }
+  li {
+    overflow-x: hidden;
+    padding: 2px;
+
+  }
+  img {
+    border-radius: 5px;
+    @media (min-width: 992px){
+      height: 180px;
+    }
+  }
+
+  .list-group li {
+    border-style: none;
+  }
+
+  @media (min-width: 1200px){
+    // .contact-buttons{
+    //   top: 150px;
+    // }
+    img{
+      margin-top: 10px;
+      margin-left: -10px;
+      // height: 180px;
+    }
+  }
+
+  @media (max-width: 1199px){
+    img{
+        // display: block;
+        // width: 100%;
+        // height: 180px;
+        margin: 10px;
+
+    }
+    // .contact-buttons{
+    //   top: 150px;
+    // }
+    .col-md-6 {
+      padding-right: 0px;
+    }
+  }
+  @media (max-width: 991px) and (min-width: 768px){
+    height: 470px;
+    // text-align: center;
+    padding: 0px;
+
+    .row {
+      margin-left: auto;
+      margin-right: auto;
+      // padding-left: 30px;
+    }
+
+    .name {
+      font-size: 20px;
+    }
+    img{
+      width: 80%;
+      margin-right: auto;
+      margin-left: 25px;
+
+    }
+    ul {
+      margin-left: 25px;
+      .group-list {
+        margin-left: 0px;
+      }
+    }
+    .contact-buttons {
+      margin-left: 35px;
+      top: 150px;
+    }
+
+  }
+
+  @media (max-width: 767px){
+    // text-align: right;
+    .contact-buttons {
+      position: relative;
+      top: -20px;
+      width: 200px
+      // top: 150px;
+    }
+    .col-xs-12 {
+      position: absolute;
+      top: 220px;
+    }
+
+    // .row {
+    //   height: 300px;
+    // }
+    img {
+      margin-top: -20px;
+      width: 80%;
+      // height: 100px;
+    }
+    .name-row {
+      text-align: left;
+      // padding-left: 20px;
+    }
+    .name {
+      font-size: 20px;
+    }
+  }
+
+
+
+
+}
+
+
+//
+// .contact-grid li {
+//   overflow-x: hidden;
+// }
+
+
+
+.dis-btn-hover-effect:hover {
+  cursor: default !important;
+  color: black;
+  background-color: white;
+  border-color: #ccc;
+  z-index: 0 !important;
+}
+/*
+.contact-grid ul {
+  list-style: none;
+}
+
+ul .group-list {
+  list-style: circle;
+}
+
+
+#contactDetailsContainer ul {
+  list-style: none;
+}*/
+
+
+.contact-col{
+}
+
+
+#confirmAddWindow{
+  height: 400px;
+  width: 400px;
+  background-color: grey;
+  position: fixed;
+
+}
+
+
+#confirmDeleteWindow{
+  position: relative;
+
+  transform: rotateY(-180deg);
+}
+
+
+.nav {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	/*width: 320px;
+	height: 480px;*/
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.9s;
+	transform-style: preserve-3d;
+  background-color: #428bca !important;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+#contactDetailsContainer {
+  position: fixed;
+  top: 0;
+
+
+}
+
+#contactDetailsOverlay{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.93);
+}
+
+#contactDetails {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  height: 400px;
+  width: 400px;
+  background-color: grey;
+}
+
+
+.windowOverlay{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.93);
+  z-index: 19
+}
+
+.popupBox {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  height: 400px;
+  width: 400px;
+  background-color: grey;
+  z-index: 20;
+}
+
+
+.fadeout {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+#addComment {
+  height: 182px;
+  @media (max-width: 991px){
+
+      height: 160px;
+
+
+
+  }
+}
+// @media (max-width: 1199px){
+//   .contact-grid  img{
+//
+//       display: block;
+//       width: 100%;
+//       height: auto;
+//
+//   }
+//   .contact-grid .col-md-6 {
+//     padding: 0px;
+//   }
+// }
+
+
+
+.align-top {
+  vertical-align: top;
+}
+
+.popover {
+  background-color: #ff4444;
+  color: white
+}
+
+.popover.right .arrow:after {
+  border-right-color: #ff4444;
+}
+.popover.bottom .arrow:after {
+  border-bottom-color: #ff4444;
+}
+.popover.top .arrow:after {
+  border-top-color: #ff4444;
+}
+
+
+.close-details-glyph {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+
+.loginBox {
+  margin-top: 5%
+}
+
+#picInput {
+  background-color: #337ab7;
+  color: white;
+}
+
+
+#searchForm .form-group {
+  /*display: inline-block;*/
+  width: 80%
+}
+
+#searchForm {
+  margin-top: -25px;
+}
+
+/*img {
+  display: block;
+  width: 100%;
+  height: auto;
+}*/
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+  -webkit-transition:0.3s linear all;
+  transition:0.3s linear all;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  opacity:0;
+  height: 0px;
+}
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  opacity:1;
+   height: 260px;
+}
+.repeat-item {
+  height: 260px;
+}
+
+@media (max-width: 767px){
+  #submit-login {
+    width: 100%
+  }
+
+  //moves text of need an account or already have an account on login to center below login button
+  #lbt-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  #login-bottom-text {
+    width: 100%;
+    float: none!important;
+  }
+  #sort-group {
+    float:none !important;
+    margin-top: 5px;
+  }
+  #login-body {
+    background-color: #f5f5f5;
+    .well {
+      border-color: #f5f5f5;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+
+    }
+  }
+}
+
+// @media (max-width: 324px){
+//   .pull-right {
+//     float: clear!important;
+//     text-align: center;
+//   }
+// }

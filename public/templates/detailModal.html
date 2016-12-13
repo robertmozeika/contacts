@@ -1,0 +1,49 @@
+<!-- <script type="text/ng-template" id="detailModal.html"> -->
+<!-- <div class="modal-body" id="modal-body-{{name}}"> -->
+<!--
+    <div id="contactDetailsOverlay" ng-click="hideDetails()">
+      <div id="contactDetails" ng-click="$event.stopPropagation();"> -->
+
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title-{{name}}">Contact Details: {{detailContact.firstName}}&nbsp;{{detailContact.lastName}}</h3>
+</div>
+
+
+<div class="modal-body" id="modal-body-{{name}}">
+    <div class="row">
+        <div class="col-sm-6">
+            <img ng-src="{{detailContact.profilePic}}" />
+        </div>
+        <div class="col-sm-6">
+            <ul>
+                <li>First Name: {{detailContact.firstName}}</li>
+                <li>Last Name: {{detailContact.lastName}}</li>
+                <li>Email: {{detailContact.email}}</li>
+                <li ng-class="{'hidden': detailContact.phone == undefined}">Cell: {{detailContact.phone}}</li><br />
+                <li ng-class="{'hidden': detailContact.birthday == undefined}">Date of Birth: {{readBirthday(detailContact.birthday)}}</li>
+                <li ng-class="{'hidden': detailContact.groups.length == 0}">Group:
+                    <ul class="group-list">
+
+                        <li ng-repeat="group in detailContact.groups">{{group}}</li>
+                    </ul>
+                </li>
+                <li ng-class="{'hidden': detailContact.comments == undefined}">Comments: {{detailContact.comments}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<span ng-click="closeModal()" class="glyphicon glyphicon-remove close-details-glyph"></span>
+
+<!-- </div>
+
+    </div>
+
+      </div>
+  </div> -->
+
+<!-- <div class="modal-dialog"> -->
+<!-- <div class="modal-content"> -->
+<!-- hello -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </script> -->

@@ -13,9 +13,7 @@ angular
         })
       };
       this.addContact = function(input){
-        $http.post('/getContacts/add', input).then(function(response){
-          //redirect state here back to home
-        })
+        return $http.post('/getContacts/add', input)
       };
       this.deleteContact = function(input){
         $http.get('/getContacts/delete?id=' + input).then(function(response){

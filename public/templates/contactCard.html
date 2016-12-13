@@ -1,12 +1,37 @@
-<img ng-src="{{getProfilePic(contact._id)}}" />
-<li>First Name: {{contact.firstName}}</li>
-<li>Last Name: {{contact.lastName}}</li>
-<li>Email: {{contact.email}}</li>
-<li ng-class="showDetail(contact.phone)">Cell: {{contact.phone}}</li><br />
-<li ng-class="showDetail(contact.birthday)">Date of Birth: {{readBirthday(contact.birthday)}}</li>
-<li ng-class="showDetail(contact.groups[0])" >Group:<ul>
+<div class="row">
+    <div class="col-sm-12 col-sm-offset-0 col-xs-6 col-xs-offset-5 text-center name-row"><span class="name">{{contact.firstName}}&nbsp;{{contact.lastName}}</span></div>
+    <div class="col-md-6 col-sm-12 col-xs-5">
+        <img ng-src="{{getProfilePic(contacts, contact._id)}}" />
 
-<li ng-repeat="group in contact.groups">{{group}}</li> </ul></li>
+    </div>
 
-<button class="btn btn-success" ng-click="showCDetails(contact._id)" >View Details</button>
-<button class="btn btn-danger" ng-click="deleteButton($index, contact._id)">Delete</button>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+        <ul class="list-group">
+            <!-- <li class="list-group-item" ></li> -->
+            <li class="list-group-item" >{{contact.email}}</li>
+            <li class="list-group-item"  ng-class="{'hidden': contact.phone == undefined}">Phone:: {{contact.phone}}</li>
+            <li class="list-group-item"  ng-class="{'hidden': contact.birthday == undefined}">Date of Birth: {{readBirthday(contact.birthday)}}</li>
+            <li class="list-group-item"  ng-class="{'hidden': contact.groups.length == 0}">Group:
+                <ul class="group-list">
+
+                    <li  ng-repeat="group in contact.groups">{{group}}</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="contact-buttons hidden-xs">
+          <button class="btn btn-success" ng-click="changeDetailContact(contact)">View Details</button>
+          <button class="btn btn-danger" ng-click="deleteButton($index, contact._id)">Delete</button>
+        </div>
+
+
+    </div>
+    <div class="col-xs-12 clearfix visible-xs-block">
+      <div class="contact-buttons center-block">
+        <button class="btn btn-success" ng-click="changeDetailContact(contact)">View Details</button>
+        <button class="btn btn-danger" ng-click="deleteButton($index, contact._id)">Delete</button>
+      </div>
+    </div>
+</div>
+
+ <!-- hidden-sm hidden-md hidden-lg -->

@@ -5,11 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var mongo = require('mongodb')
+var passport = require('passport');
+var session  = require('express-session');
+var flash    = require('connect-flash');
+var mongoose = require('mongoose');
+var mongo = require('mongodb');
+var expressSanitizer = require('express-sanitizer');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var getContacts = require('./routes/getContacts')
+var login = require('./routes/login')
+var signup = require('./routes/signup')
+
+
 
 var app = express();
 var mime = require('mime')
@@ -31,28 +41,6 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-// app.post('/photos/upload', upload.single('file'), function (req, res, next) {
-//   // console.log(req.files)
-// console.log(req.body)
-//   sharp(req.file.path).resize(200, 200).toBuffer(function (err, buf) {
-//     console.log(buf)
-//     if (err) return next(err)
-//   })
-//   sharp(req.file.path)
-//   .rotate()
-//   .resize(200, 200)
-//   .toFile('./public/images/'+ req.body.user + req.body.date +'.jpg', function(err) {
-//     // output.jpg is a 300 pixels wide and 200 pixels high image
-//     // containing a scaled and cropped version of input.jpg
-//   });
-//   // .toBuffer()
-//
-//   // req.files is array of `photos` files
-//   // req.body will contain the text fields, if there were any
-//   console.log(req.file)
-// })
-//
-//
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -63,11 +51,21 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressSanitizer())
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//passport requirements
+require('./config/passport')(passport); // pass passport for configuration
+app.use(session({ secret: '085603757172', cookie: { maxAge: 604800000  }, resave: true, saveUninitialized: true })); // maxAge is one week
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 app.use('/', routes);
 app.use('/users', users);
+app.use('/login', login);
+app.use('/signup', signup)
 app.use('/getContacts', getContacts);
 
 
@@ -91,6 +89,8 @@ if (app.get('env') === 'development') {
     });
   });
 }
+
+mongoose.connect('mongodb://localhost:27017/avonto')
 
 // production error handler
 // no stacktraces leaked to user

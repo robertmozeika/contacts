@@ -1,6 +1,6 @@
 var mongodb = require('mongodb');
 
-function getAllContacts(){
+function getAllContacts(user){
   return new Promise((resolve, reject)=>{
     var MongoClient = mongodb.MongoClient;
 
@@ -13,7 +13,8 @@ function getAllContacts(){
 
         var collection = db.collection('contacts');
 
-        collection.find({}).toArray(function(err, result){
+        
+        collection.find({user: user}).toArray(function(err, result){
           if(err) {
             reject(err)
           }else{

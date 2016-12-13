@@ -1,77 +1,75 @@
 <!-- <h1>{{appTitle}}</h1> -->
 <div class="row">
-
-  <div class="col-sm-6">
-    *First Name: <input uib-popover="{{fnText}}"
-    popover-is-open="fnPop" popover-placement="top" type="text" ng-model="toAdd.firstName" /><br /><br />
-    *Last Name: <input uib-popover="{{lnText}}"
-    popover-is-open="lnPop" popover-placement="right" type="text" ng-model="toAdd.lastName" /><br /><br />
-    *Email: <input uib-popover="{{popoverEmailText}}"
-    popover-is-open="emailPop" popover-placement="bottom" type="text" ng-model="toAdd.email" />
-    <br /><br />
-
-    Phone: <input type="text" ng-model="toAdd.phone" /><br /><br />
-
-
-    Birthday:
-    <!-- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> -->
-
-    <span class="input-group">
-      <input placeholder="mm/dd/yyyy"popover-is-open="datePop" popover-placement="bottom" uib-popover="{{popoverDateText}}" id="datePicker" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt"  ng-change="changeDate()" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" e-init-date="false" />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-    </span><br />
+    <fieldset>
+        <div class="col-sm-6">
 
 
 
+            <div class="form-group">
+                <label for="fnInput"> *First Name:</label> <input class="form-control" placeholder="Enter First Name" id="fnInput" uib-popover="{{popValues.fnText}}" popover-is-open="popValues.fnPop" popover-placement="top" type="text" ng-model="toAdd.firstName"
+                />
+            </div>
 
-  </div>
-  <div class="contact-col col-sm-6">
+            <div class="form-group">
 
-      <!-- <input type="file" ng-file-select="onFileSelect($files)" multiple> -->
+                <label for="lnInput"> *Last Name:</label> <input class="form-control" placeholder="Enter Last Name" id="lnInput" uib-popover="{{popValues.lnText}}" popover-is-open="popValues.lnPop" popover-placement="right" type="text" ng-model="toAdd.lastName"
+                />
+            </div>
 
+            <div class="form-group">
+                <label for="emailInput">*Email: </label><input id="emailInput" class="form-control" placeholder="Enter Email" uib-popover="{{popValues.popoverEmailText}}" popover-is-open="popValues.emailPop" popover-placement="bottom" type="text" ng-model="toAdd.email"
+                />
+            </div>
+            <div class="form-group">
+                <label for="phoneInput">Phone: </label><input id="phoneInput" class="form-control" placeholder="Enter Phone Number" type="text" ng-model="toAdd.phone" />
+            </div>
+            <div class="form-group">
+                <label for="datePicker">Birthday:</label>
+                <!-- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> -->
 
-
-
-
-
-
-
-        <!-- <input type = "file" file-model = "myFile" onchange="angular.element(this).scope().fileNameChanged(myFile)"/>
-        <button ng-click = "uploadFile()">upload me</button> -->
-
-
-
-
-  Profile Picture:<button type="file" ngf-select="queueImage($file, $invalidFiles)" accept="image/*" >Select File</button>&nbsp;<span>{{queuedImage.name}}</span>
-<br /><br />
-<br />
-
-
-
-
-
-
-
-
-
+                <span class="input-group">
+                <input placeholder="mm/dd/yyyy"popover-is-open="popValues.datePop" popover-placement="bottom" uib-popover="{{popValues.popoverDateText}}" id="datePicker" type="text" class="form-control" uib-datepicker-popup="{{datePicker.format}}" ng-model="datePicker.dt"  ng-change="datePicker.changeDate()" is-open="datePicker.popup1.opened" datepicker-options="datePicker.dateOptions" ng-required="true" close-text="Close" alt-input-formats="datePicker.altInputFormats" e-init-date="false" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="datePicker.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                </span>
+            </div>
 
 
-    Groups: <div class="btn-group" ><button ng-repeat="option in optionsList" class="btn" ng-class="option.buttonClass" ng-click="addGroup($index)">  {{option.value}}</button></div>
-    <!-- <select ng-options="indx as option for (indx, option) in optionsList" ng-model="addToGroup" ng-change="addGroup(addToGroup)">
+        </div>
+        <div class="contact-col col-sm-6">
 
-    </select> -->
-    <br /><br />
-    <div>
-      <span class="align-top">Comments: </span><textarea id="addComment" maxlength="2000" type="textarea" ng-model="toAdd.comments">Enter text here...</textarea><br /><br />
-    </div>
-  </div>
-</div></br>
-<p>
-  * required fields
-</p>
-<br /><br />
+            <div class="form-group">
+                <label for="picInput"> Profile Picture:</label> <button class="form-control" id="picInput" type="file" ngf-select="queueImage($file, $invalidFiles)" accept="image/*">{{queuedImage.name || "Browse"}}</button>&nbsp;<span></span>
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Groups:</label>
+                <div class="btn-group"><button ng-repeat="option in optionsList" class="btn" ng-class="option.buttonClass" ng-click="addGroup($index)">  {{option.value}}</button></div>
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div>
+                    <label for="addComment">Comments: </label><textarea placeholder="Enter comments..." id="addComment" class="form-control" maxlength="2000" type="textarea" ng-model="toAdd.comments">Enter text here...</textarea><br /><br />
+                </div>
+            </div>
+
+
+            <strong class="pull-right">
+                * required fields
+            </strong>
+        </div>
+
+
+    </fieldset>
+</div>
+
 
 
 <button ng-click="addContact()" class="btn btn-success">Add Contact</button>
@@ -84,6 +82,9 @@
 
 
 
-<div id="addWindow" ng-include="addWindow">
+<!-- <div id="addWindow" ng-include="modalValues.template">
 
-</div>
+</div> -->
+
+
+<add-modal modal-values="modalValues"></add-modal>
