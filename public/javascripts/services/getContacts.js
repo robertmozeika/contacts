@@ -8,7 +8,6 @@ angular
       this.getAll = function(){
         return $http.get('/getContacts/all').then(function(response){
           return response.data;
-          // return [{firstName: "bob", lastName:"mozeika", Cell: "6097126555"}]
 
         })
       };

@@ -15,8 +15,7 @@ angular
                 }
             } else{
               return 2
-              // console.log('setting it')
-              // $scope.isOpen = true
+
             }
           } else{
             return false

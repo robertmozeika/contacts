@@ -90,7 +90,9 @@ if (app.get('env') === 'development') {
   });
 }
 
-mongoose.connect('mongodb://localhost:27017/avonto')
+// mongoose.connect('mongodb://localhost:27017/avonto')
+mongoose.connect('mongodb://user:avontopass@jello.modulusmongo.net:27017/Jy8pivuz')
+
 
 // production error handler
 // no stacktraces leaked to user

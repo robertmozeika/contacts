@@ -1,4 +1,3 @@
-<!-- <h1>{{appTitle}}</h1> -->
 <div class="row">
     <fieldset>
         <div class="col-sm-6">
@@ -25,7 +24,6 @@
             </div>
             <div class="form-group">
                 <label for="datePicker">Birthday:</label>
-                <!-- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> -->
 
                 <span class="input-group">
                 <input placeholder="mm/dd/yyyy"popover-is-open="popValues.datePop" popover-placement="bottom" uib-popover="{{popValues.popoverDateText}}" id="datePicker" type="text" class="form-control" uib-datepicker-popup="{{datePicker.format}}" ng-model="datePicker.dt"  ng-change="datePicker.changeDate()" is-open="datePicker.popup1.opened" datepicker-options="datePicker.dateOptions" ng-required="true" close-text="Close" alt-input-formats="datePicker.altInputFormats" e-init-date="false" />
@@ -82,9 +80,6 @@
 
 
 
-<!-- <div id="addWindow" ng-include="modalValues.template">
-
-</div> -->
 
 
 <add-modal modal-values="modalValues"></add-modal>

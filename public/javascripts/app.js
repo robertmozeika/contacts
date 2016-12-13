@@ -2,7 +2,7 @@ import angular from 'angular';
 import uibootstrap from 'angular-ui-bootstrap'
 import ngFileUpload from 'ng-file-upload'
 import uirouter from 'angular-ui-router'
-var ngAnimate = require('angular-animate')
+import ngAnimate from 'angular-animate'
 
 
 

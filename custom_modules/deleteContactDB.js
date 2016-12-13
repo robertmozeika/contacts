@@ -5,7 +5,7 @@ function deleteContact(id){
   return new Promise((resolve, reject)=>{
     var MongoClient = mongodb.MongoClient;
 
-    var url = "mongodb://localhost:27017/avonto"
+    var url = "mongodb://user:avontopass@jello.modulusmongo.net:27017/Jy8pivuz"
     MongoClient.connect(url, function(err, db){
       if(err){
         console.log('Unable to connect' + err)

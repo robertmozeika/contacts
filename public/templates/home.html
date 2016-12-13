@@ -1,10 +1,5 @@
-<!--
-  <h1>
-    {{appTitle}}
-  </h1> -->
 <div>
 
-    <!-- First Name: <input class="form-control" type="text" ng-model="filterValue.firstName" /> -->
 
     <div class="row">
         <div class="col-md-7 col-sm-6">
@@ -20,7 +15,7 @@
 
                     </ul>
                 </div>
-                <input ng-model="filterObj.filterText" ng-change="getFilterLength()" type="text" class="form-control" name="x" placeholder="filter term...">
+                <input ng-model="filterObj.filterText" type="text" class="form-control" name="x" placeholder="filter term...">
 
             </div>
         </div>
@@ -46,10 +41,8 @@
     <div class="col-lg-4 col-md-6 col-sm-4 flip-container" ng-repeat="contact in  (valuefiltered = (contacts | orderBy:sortType() | filter: filterObj.getFilterVal())) | startFrom:(pageValues.currentPage-1)*pageValues.itemsPerPage | limitTo:pageValues.itemsPerPage">
 
         <div class="contact-grid well" ng-class="flipperClass($index)">
-            <!-- <span class="glyphicon glyphicon-remove close-rpWindow"></span> -->
             <div ng-include="getDeletePop($index)">
 
-                <!-- ng-class="{'hidden': currentPage !== $index}" -->
 
             </div>
 

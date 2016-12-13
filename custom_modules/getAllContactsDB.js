@@ -4,7 +4,7 @@ function getAllContacts(user){
   return new Promise((resolve, reject)=>{
     var MongoClient = mongodb.MongoClient;
 
-    var url = "mongodb://localhost:27017/avonto"
+    var url = "mongodb://user:avontopass@jello.modulusmongo.net:27017/Jy8pivuz"
     MongoClient.connect(url, function(err, db){
       if(err){
         console.log('Unable to connect' + err)
@@ -13,7 +13,7 @@ function getAllContacts(user){
 
         var collection = db.collection('contacts');
 
-        
+
         collection.find({user: user}).toArray(function(err, result){
           if(err) {
             reject(err)

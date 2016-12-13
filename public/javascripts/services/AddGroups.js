@@ -38,7 +38,6 @@ angular
     this.addGroup = function(index){
       var currentGroup = this.groups[index]
       if (currentGroup.selected == false){
-        console.log(this)
         currentGroup.buttonClass = "btn-primary";
         this.addedGroups.push(currentGroup.value)
         currentGroup.selected = true;
@@ -51,8 +50,8 @@ angular
 
     }
 
+    //when user opens add window, previous values need to be cleared
     this.clearGroups = (()=>{
-      console.log('cleared groups')
       this.groups.forEach((element)=>{
         element.selected = false;
         element.buttonClass = "btn-default";

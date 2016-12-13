@@ -11,15 +11,13 @@ angular
       link: function(scope,element,attrs){
 
         scope.$watch('modalValues', function(){
-          console.log(scope.modalValues)
           if (scope.modalValues.popupText){
 
             scope.modal()
           }
 
         }, true);
-        // scope.readBirthday = $state.readBirthday;
-        //
+
         scope.modal = function(){
             scope.theModal = $uibModal.open({
               animation: true,
@@ -35,7 +33,6 @@ angular
 
             scope.theModal.result.catch(function(){
                 //Do stuff with respect to dismissal
-                console.log('dismissed')
                 scope.modalValues.popupText = null;
             });
 

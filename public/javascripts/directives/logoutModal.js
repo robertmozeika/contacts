@@ -8,12 +8,9 @@ angular
 
       link: function(scope,element,attrs){
 
-        scope.logOut = function(){
-          console.log('logged out')
-        }
+
 
         scope.$watch('logoutClick', function(){
-          console.log(scope.logoutClick)
           if (scope.logoutClick){
 
             scope.modal()
@@ -36,8 +33,6 @@ angular
             }
 
             scope.logoutModal.result.catch(function(){
-                //Do stuff with respect to dismissal
-                console.log('dismissed')
                 scope.modalValues.popupText = null;
             });
 

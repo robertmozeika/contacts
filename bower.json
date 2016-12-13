@@ -1,7 +1,0 @@
-{
-  "name": "starter-node-angular",
-  "version": "1.0.0",
-  "dependencies": {
-    "traceur": "latest"
-  }
-}

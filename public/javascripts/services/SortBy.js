@@ -2,6 +2,7 @@
 angular
   .module('app')
   .service('SortBy', function(){
+    //how the contacts are sorted, proper is what is displayed in the buttons
     this.sorters = [
       {
       sortType: 'firstName',
@@ -27,22 +28,18 @@ angular
       this.sortType.data = this.sorters[index].sortType;
     }
 
-    // this.sort
     this.filterObj = {};
 
     this.filterObj.changeFilterGroup = function(input){
-      console.log('hane')
-      console.log(input)
+
       if (input > -1){
         this.filterObj.filterGroupVal = this.sorters[input].sortType
         this.filterObj.filterGroupName = this.sorters[input].proper
 
-        console.log(this.filterObj.filterGroupVal)
-        // this.filterObj.filterVal();
+
       } else {
         this.filterObj.filterGroupVal = null;
       }
-      // console.log(this.filterObj.filterc)
     }.bind(this)
 
 
@@ -62,7 +59,6 @@ angular
       } else {
         filterc = this.filterObj.filterText
       }
-      console.log(this.filterObj.filterText)
 
       return filterc
     }.bind(this)

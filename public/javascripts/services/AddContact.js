@@ -2,7 +2,6 @@ angular
   .module('app')
   .service('AddContact', ['ValidateFields','fileUpload', 'GetContacts','BirthdayPicker','$state',function(ValidateFields,fileUpload, GetContacts, BirthdayPicker, $state){
 
-    console.log('add service called')
     this.profilePic = null;
 
 
@@ -37,10 +36,8 @@ angular
     //posts contact to db, will be given modified $scope.toAdd object from this.addContact function below
     function postContact(input){
 
-        console.log('ran')
-        console.log(input)
+
         return $http.post('/getContacts/add', input).then(function(result){
-          console.log('succesfully added')
           return
         })
 
@@ -53,7 +50,6 @@ angular
           //sets date correctly if it is added in an input that bootstrap datepicker doesn't convert, adds to toAdd object
           var toDate = [];
           var dt = BirthdayPicker.getValues().dt;
-          console.log(dateElement)
           if (dt == undefined && dateElement !== ""){
             dateElement.split(',')[0].split("/").map(function(val, index, arr) {
               toDate.push(val)
@@ -85,15 +81,13 @@ angular
 
           //validation returns 1 if everything properly validates
           if (validation == 1 ){
-            var user = "username";
             var date = (new Date).getTime()
 
             var queuedImage = fileUpload.getQueuedImage();
             if (queuedImage) {
-              console.log('ran');
-              console.log(queuedImage)
+              
               toAdd.profilePic = date
-              fileUpload.uploadFiles(user,date);
+              fileUpload.uploadFiles(date);
             }
 
             this.modal.button1Text = "OK";

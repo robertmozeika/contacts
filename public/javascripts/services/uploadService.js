@@ -4,6 +4,8 @@ require('angular');
 angular
   .module('app')
   .service('fileUpload', ['$http', 'Upload',function ($http, Upload) {
+
+    //for uploading images
       this.uploadFileToUrl = function(file, uploadUrl){
          var fd = new FormData();
          fd.append('file', file);
@@ -21,30 +23,16 @@ angular
       }
 
 
-      this.uploadFiles = function(user,currentTime) {
-          // $scope.f = file;
+      this.uploadFiles = function(currentTime) {
           var queuedImage = this.queuedImage
-          console.log(queuedImage)
           this.errFile = this.queuedInvalidImage && this.queuedInvalidImage[0];
           if (queuedImage) {
-            // Upload.upload({
-            //     url: '/photos/upload',
-            //     method: 'POST',
-            //     data: {data:"hello"}, // Any data needed to be submitted along with the files
-            //     file: file
-            //   });
-            // var currentTime = (new Date).getTime();
-            // console.log(currentTime,user)
-            // console.log('tried to upload')
-            // $scope.toAdd.proqueuedImagePic = '/images/' + user + currentTime + '.jpg';
 
-            //user should be id of user
               queuedImage.upload = Upload.upload({
                   url: 'getContacts/photos/upload',
                   method: 'POST',
                   file: queuedImage,
                   data: {
-                    user: user,
                     date: currentTime,
                   }
 

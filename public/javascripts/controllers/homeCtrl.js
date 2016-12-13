@@ -5,19 +5,18 @@ angular
   .module('app')
   .controller('homeCtrl', ['$rootScope', '$scope','GetContacts','IndexOfObject','DeleteButton', 'SortBy', 'HomeContactDisplay', '$uibModal', 'Pagination',function($rootScope, $scope, GetContacts, IndexOfObject, DeleteButton, SortBy,HomeContactDisplay,$uibModal, Pagination){
 
-    console.log('home called')
-    $scope.appTitle = "My Contacts";
 
 
     GetContacts.getAll().then(function(data){
       $scope.contacts = data
-      console.log(data.length)
-      // $scope.pageValues.totalItems = data.length
     });
 
 
-
+    //template for delete window
     $scope.getDeletePop = DeleteButton.getDeletePop.bind(DeleteButton);
+
+
+    $scope.flipperClass = DeleteButton.flipperClass.bind(DeleteButton);
 
 
     $scope.deleteButton = DeleteButton.pressDelete.bind(DeleteButton);
@@ -25,7 +24,7 @@ angular
 
     $scope.confirmDelete = DeleteButton.confirmDelete.bind(DeleteButton);
 
-    $scope.flipperClass = DeleteButton.flipperClass.bind(DeleteButton);
+
 
 
     $scope.readBirthday = HomeContactDisplay.readBirthday;
@@ -51,89 +50,21 @@ angular
     }
 
 
+    $scope.pageValues = Pagination.getPageValues();
 
 
 
-  //   $scope.totalItems = 64;
-  //   $scope.currentPage = 1;
-  //   $scope.itemsPerPage = 9;
-  //
-  //
-  //
-  // $scope.setPage = function (pageNo) {
-  //   $scope.currentPage = pageNo;
-  // };
-  //
-  // // $scope.pageChanged = function() {
-  // //   $log.log('Page changed to: ' + $scope.currentPage);
-  // // };
-  //
-  // $scope.maxSize = 5;
-  // // $scope.bigTotalItems = 175;
-  // // $scope.bigCurrentPage = 1;
-  //
-
-  $rootScope.contactLength = getFL();
-
-  $scope.pageValues = Pagination.getPageValues();
-
-  function getFL(){
-    console.log('filtered changed')
-    return $scope.valuefiltered;
-
-  }
-
-  $scope.getFilterLength = function(){
-    var result = getFL();
-    if (Array.isArray(result)){
-      console.log('is array')
-      return result.length;
-    } else {
-      return "top"
-    }
-  }
-
-  // Pagination.setTotalItems($scope.valuefiltered)
-
-  $scope.items = [
-   'The first choice!',
-   'And another choice for you.',
-   'but wait! A third!'
- ];
-
- $scope.status = {
-   isopen: false
- };
 
 
- $scope.setFilterValue = function(inp){
-   console.log(inp)
- }
-
-//
-//  $scope.toggled = function(open) {
-//    $log.log('Dropdown is now: ', open);
-//  };
-//
-//  $scope.toggleDropdown = function($event) {
-//    $event.preventDefault();
-//    $event.stopPropagation();
-//    $scope.status.isopen = !$scope.status.isopen;
-//  };
-//
-//  $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
-// });
   $scope.filterObj = SortBy.getFilterObj();
+
+  //filter group is either first name, last name, or email
   $scope.changeFilterGroup = function(input){
-    console.log('hane')
-    console.log(input)
     if (input){
       $scope.filterGroupVal = input
-      // $scope.filterVal();
     } else {
       $scope.filterGroupVal = null;
     }
-    // console.log($scope.filterc)
   }
 
 
@@ -156,10 +87,9 @@ angular
     return filterc
   }
 
-
+  //when filtered, removes unneeded pages
   $scope.$watch('valuefiltered', function(){
-    console.log('vf changed');
-    Pagination.setTotalItems($scope.valuefiltered)
+    Pagination.setTotalItems($scope.valuefiltered);
   }, true)
 
   }])
@@ -172,9 +102,3 @@ angular
 
     }
   })
-
-
-
-  // var app = angular.module('filters', []);
-  //
-  // app

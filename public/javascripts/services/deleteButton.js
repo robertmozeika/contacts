@@ -5,7 +5,7 @@ angular
   .module('app')
   .service('DeleteButton', ['GetContacts','IndexOfObject',function(GetContacts, IndexOfObject){
 
-    // this.contacts = get
+    // Current index is for changing the ng-include to the delete window when its $index matches the current index
     this.currentIndex = -1;
 
     this.getDeletePop = function(index){
@@ -29,11 +29,9 @@ angular
     this.pressDelete = function(index,id){
       this.currentIndex = index;
       this.currentID = id;
-      console.log(this.currentIndex)
     };
 
     this.confirmDelete = function(bool, contacts){
-      // return new Promise((resolve, reject)=>{
         if (bool){
 
           var actualIndex = IndexOfObject.getIndexID(contacts,this.currentID)
@@ -44,12 +42,10 @@ angular
 
 
         }   else {
-        //  $scope.confirmDeleteClass = "hidden"
          this.currentIndex = -1;
 
         }
 
-      // })
 
     }
   }])

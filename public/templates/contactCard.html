@@ -8,7 +8,6 @@
 
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
         <ul class="list-group">
-            <!-- <li class="list-group-item" ></li> -->
             <li class="list-group-item" >{{contact.email}}</li>
             <li class="list-group-item"  ng-class="{'hidden': contact.phone == undefined}">Phone:: {{contact.phone}}</li>
             <li class="list-group-item"  ng-class="{'hidden': contact.birthday == undefined}">Date of Birth: {{readBirthday(contact.birthday)}}</li>
@@ -33,5 +32,3 @@
       </div>
     </div>
 </div>
-
- <!-- hidden-sm hidden-md hidden-lg -->
